@@ -1,0 +1,108 @@
+.login-page-container {
+  height: 1024px;
+  width: 1440px;
+  display: flex;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 660px;
+}
+
+.login-details-container {
+  margin-top: 270px;
+  margin-right: 29px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-image {
+  height: 1024px;
+  width: 780px;
+}
+
+.logo {
+  width: 141px;
+  height: 48px;
+  margin-bottom: 51px;
+}
+
+.input-username {
+  background-color: transparent;
+  border: 1px solid #c3cad9;
+  height: 56px;
+  width: 360px;
+  left: 0px;
+  top: 0px;
+  border-radius: 8px;
+  margin-top: 12px;
+  margin-bottom: 27px;
+  outline: none;
+  padding-left: 20px;
+  color: #5a7184;
+  font-family: 'roboto';
+}
+
+.input-password {
+  background-color: transparent;
+  border: 1px solid #c3cad9;
+  height: 56px;
+  width: 360px;
+  left: 0px;
+  top: 0px;
+  border-radius: 8px;
+  margin-top: 12px;
+  outline: none;
+  padding-left: 20px;
+  color: #5a7184;
+  font-family: 'roboto';
+}
+
+.label {
+  height: 19px;
+  width: 88px;
+  left: 0px;
+  top: 3px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #5a7184;
+  font-family: 'roboto';
+}
+
+.login-button {
+  height: 56px;
+  width: 360px;
+  left: 0px;
+  top: 0px;
+  border-radius: 8px;
+  background: #0284c7;
+  border: none;
+  font-family: 'robot';
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  margin-top: 32px;
+}
+
+.error {
+  height: 17px;
+  width: 215px;
+  left: 921px;
+  top: 613px;
+  border-radius: nullpx;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ef4444;
+}
