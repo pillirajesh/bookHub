@@ -42,7 +42,7 @@
 
 .all-books-heading {
   height: 22px;
-  width: 81px;
+  width: 250px;
   left: 438px;
   top: 144px;
   border-radius: nullpx;
@@ -85,20 +85,33 @@
 }
 
 .list-button {
-  background-color: transparent;
   border: none;
+  margin-top: 10px;
+  background-color: transparent;
+  font-family: 'roboto';
+  font-weight: 700;
+  font-size: 15px;
+  margin-left: 0px;
+  padding: 0px;
+  align-items: center;
+  color: rgb(69, 74, 75);
   cursor: pointer;
   outline: none;
-  margin-top: 10px;
 }
 
-.list-button-color {
+.active-item {
   border: none;
+  margin-top: 10px;
+  background-color: transparent;
+  font-family: 'roboto';
+  font-weight: 700;
+  font-size: 15px;
+  margin-left: 0px;
+  padding: 0px;
+  align-items: center;
+  color: #0284c7;
   cursor: pointer;
   outline: none;
-  margin-top: 10px;
-  color: #0284c7;
-  background-color: transparent;
 }
 
 .star {
@@ -208,4 +221,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.no-search-results-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-search-paragraph {
+  font-size: 20px;
+  color: #475569;
+  font-weight: 500;
+  font-family: 'roboto';
 }

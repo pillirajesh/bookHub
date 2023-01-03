@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
 import {BsSearch, BsFillStarFill} from 'react-icons/bs'
+import Header from '../Header'
 import './index.css'
 
 const status = {
@@ -42,7 +43,7 @@ class Shelf extends Component {
     apiStatus: status.initials,
     searchText: '',
     bookshelfName: bookshelvesList[0].value,
-    activeTab: false,
+    activeFilterLabel: bookshelvesList[0].label,
   }
 
   componentDidMount() {
@@ -52,9 +53,8 @@ class Shelf extends Component {
   getFetchedData = async () => {
     this.setState({apiStatus: status.loading})
     const {searchText, bookshelfName} = this.state
-    console.log(bookshelfName)
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = `https://apis.ccbp.in/book-hub/books?${bookshelfName}&search=${searchText}`
+    const apiUrl = `https://apis.ccbp.in/book-hub/books?shelf=${bookshelfName}&search=${searchText}`
     const options = {
       method: 'GET',
       headers: {
@@ -82,47 +82,59 @@ class Shelf extends Component {
     this.setState({searchText: event.target.value})
   }
 
-  searchType = label => {
-    this.setState({bookshelfName: label, activeTab: true}, this.getFetchedData)
-  }
-
   getSearchInputDetails = () => this.getFetchedData()
 
   successBookShelveDetails = () => {
-    const {shelfList} = this.state
+    const {shelfList, searchText} = this.state
 
     return (
       <>
-        <ul className="shelve-list-container">
-          {shelfList.map(eachShelf => (
-            <li key={eachShelf.id} className="shelve-list">
-              <img
-                src={eachShelf.coverPic}
-                alt="cover pic"
-                className="shelve-cover-pic"
-              />
-              <div>
-                <h1 className="shelve-title">{eachShelf.title}</h1>
-                <p className="shelve-author">{eachShelf.authorName}</p>
-                <p className="shelve-rating">
-                  Average Rating: <BsFillStarFill className="star" />
-                  <span className="rating">{eachShelf.rating}</span>
-                </p>
-                <p className="status">
-                  Status:
-                  <span className="status-type">{eachShelf.readStatus}</span>
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        {shelfList.length !== 0 ? (
+          <ul className="shelve-list-container">
+            {shelfList.map(eachShelf => (
+              <li key={eachShelf.id} className="shelve-list">
+                <Link to={`/books/${eachShelf.id}`}>
+                  <img
+                    src={eachShelf.coverPic}
+                    alt={eachShelf.title}
+                    className="shelve-cover-pic"
+                  />
+                </Link>
+                <div>
+                  <h1 className="shelve-title">{eachShelf.title}</h1>
+                  <p className="shelve-author">{eachShelf.authorName}</p>
+                  <p className="shelve-rating">
+                    Avg Rating: <BsFillStarFill className="star" />
+                    <span className="rating">{eachShelf.rating}</span>
+                  </p>
+                  <p className="status">
+                    Status:
+                    <span className="status-type">{eachShelf.readStatus}</span>
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="no-search-results-container">
+            <img
+              src="https://res.cloudinary.com/dtguk3nmz/image/upload/v1672736996/Asset_1_1_qshk99.png"
+              className="no-search-found-image"
+              alt="no books"
+            />
+            <p className="no-search-paragraph">
+              You search for {searchText} did not find any matches.
+            </p>
+          </div>
+        )}
         <div className="shelf-books-container">
-          <div className="slider-container">
-            <FaGoogle className="google" />
-            <FaTwitter className="twitter" />
-            <FaInstagram className="instagram" />
-            <FaYoutube className="you-tube" />
-
+          <div className="footer-container">
+            <div>
+              <FaGoogle className="footer-image" />
+              <FaTwitter className="footer-image" />
+              <FaInstagram className="footer-image" />
+              <FaYoutube className="footer-image" />
+            </div>
             <p className="contact-us">Contact Us</p>
           </div>
         </div>
@@ -130,8 +142,26 @@ class Shelf extends Component {
     )
   }
 
+  retryResults = () => this.getFetchedData()
+
+  failedView = () => (
+    <div className="not-found-container">
+      <img
+        src="https://res.cloudinary.com/dtguk3nmz/image/upload/v1672738009/Group_7522_oumgim.png"
+        className="failed-image"
+        alt="failure view"
+      />
+      <p className="no-search-paragraph">
+        Something went wrong, Please try again.
+      </p>
+      <button className="try-button" type="button" onClick={this.retryResults}>
+        Try Again
+      </button>
+    </div>
+  )
+
   loaderView = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="TailSpin" color="#0284C7" height={50} width={50} />
     </div>
   )
@@ -145,65 +175,55 @@ class Shelf extends Component {
       case 'LOADING':
         return this.loaderView()
 
+      case 'FAILED':
+        return this.failedView()
+
       default:
         return null
     }
   }
 
   render() {
-    const {searchText, activeTab} = this.state
+    const {searchText, bookshelfName, activeFilterLabel} = this.state
     return (
       <div>
         <div className="home-container">
-          <nav className="nav-container">
-            <img
-              src="https://res.cloudinary.com/dtguk3nmz/image/upload/v1672646149/Group_7731_yqdakw.png"
-              className="nav-logo"
-              alt="website logo"
-            />
-            <div className="nav-button-container">
-              <Link to="/" className="nav-home">
-                Home
-              </Link>
-              <Link to="/shelf" className="nav-bookshelves">
-                Book Shelves
-              </Link>
-
-              <button className="logout-button" type="button">
-                Logout
-              </button>
-            </div>
-          </nav>
+          <Header />
           <div className="divide-container">
             <div className="side-container">
-              <h1 className="book-shelve-heading">Book Shelves</h1>
+              <h1 className="book-shelve-heading">Bookshelves</h1>
               <ul className="unordered-list">
-                {bookshelvesList.map(eachShelve => (
-                  <li key={eachShelve.id} className="list">
-                    {activeTab ? (
+                {bookshelvesList.map(eachShelve => {
+                  const activeItem =
+                    eachShelve.label === bookshelfName
+                      ? 'active-item'
+                      : 'list-button'
+                  const searchType = () => {
+                    this.setState(
+                      {
+                        bookshelfName: eachShelve.value,
+                        activeFilterLabel: eachShelve.label,
+                      },
+                      this.getFetchedData,
+                    )
+                  }
+                  return (
+                    <li key={eachShelve.id} className="list">
                       <button
                         type="button"
-                        className="list-button-color"
-                        onClick={() => this.searchType(eachShelve.label)}
+                        className={`list-button ${activeItem}`}
+                        onClick={searchType}
                       >
                         {eachShelve.label}
                       </button>
-                    ) : (
-                      <button
-                        type="button"
-                        className="list-button"
-                        onClick={() => this.searchType(eachShelve.label)}
-                      >
-                        {eachShelve.label}
-                      </button>
-                    )}
-                  </li>
-                ))}
+                    </li>
+                  )
+                })}
               </ul>
             </div>
             <div className="middle-container">
               <div className="search-container">
-                <h1 className="all-books-heading">All Books</h1>
+                <h1 className="all-books-heading">{activeFilterLabel} Books</h1>
                 <div>
                   <input
                     type="search"
@@ -216,6 +236,7 @@ class Shelf extends Component {
                     type="button"
                     className="search-button"
                     onClick={this.getSearchInputDetails}
+                    testid="searchButton"
                   >
                     <BsSearch />
                   </button>
