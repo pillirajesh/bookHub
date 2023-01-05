@@ -15,3 +15,10 @@ body {
   width: 1440px;
   height: 102px;
 }
+
+@media screen and (max-width: 767px) {
+  .app-container {
+    width: 400px;
+    height: 700px;
+  }
+}

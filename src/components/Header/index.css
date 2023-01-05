@@ -1,6 +1,6 @@
 .nav-container {
-  height: 89px;
-  width: 1440px;
+  height: auto;
+  width: 100vw;
   left: 0px;
   top: 0px;
   border-radius: 0px;
@@ -9,9 +9,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 100px;
+  padding-right: 100px;
   margin-bottom: 48px;
+}
+
+@media screen and (min-width: 768px) {
+  .responsive-container {
+    display: none;
+  }
 }
 
 .nav-button-container {
@@ -21,12 +27,13 @@
   padding-left: 0px;
 }
 
-.nav-logo {
+.res-logo {
   height: 37px;
   width: 74px;
 }
 
-.nav-home {
+.change-tab-color {
+  color: #0284c7;
   height: 24px;
   width: 46px;
   left: 1019px;
@@ -38,10 +45,28 @@
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
+  margin-right: 24px;
+  font-family: 'roboto';
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.nav-home {
+  height: 24px;
+  width: 46px;
+  left: 1019px;
+  top: 33px;
+  font-family: 'roboto';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
   color: #64748b;
   margin-right: 24px;
   font-family: 'roboto';
   text-decoration: none;
+  list-style-type: none;
 }
 
 .nav-bookshelves {
@@ -49,8 +74,8 @@
   width: 96px;
   left: 1089px;
   top: 33px;
-  border-radius: nullpx;
-  font-family: Inter;
+
+  font-family: 'roboto';
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -60,6 +85,7 @@
   margin-right: 32px;
   font-family: 'roboto';
   text-decoration: none;
+  list-style-type: none;
 }
 
 .logout-button {
@@ -82,4 +108,35 @@
   font-family: 'roboto';
   text-decoration: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 766px) {
+  .nav-container {
+    display: none;
+  }
+
+  .responsive-container {
+    width: 400px;
+  }
+}
+
+.responsive-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 600px;
+}
+
+.header-navbar-tabs-container {
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .responsive-header-container {
+    width: 400px;
+    padding-top: 30px;
+  }
 }

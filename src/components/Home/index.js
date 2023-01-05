@@ -5,6 +5,9 @@ import Loader from 'react-loader-spinner'
 import Slider from 'react-slick'
 import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
 
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 import TrendingBooks from '../TrendingBooks'
 import Header from '../Header'
 
@@ -19,9 +22,10 @@ const status = {
 
 const settings = {
   dots: false,
+  infinite: false,
+  speed: 500,
   slidesToShow: 4,
-  slidesToScroll: 3,
-  autoplay: true,
+  slidesToScroll: 1,
   responsive: [
     {
       breakpoint: 1024,
@@ -31,7 +35,14 @@ const settings = {
       },
     },
     {
-      breakpoint: 786,
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
@@ -39,7 +50,6 @@ const settings = {
     },
   ],
 }
-
 class Home extends Component {
   state = {trendingBooksList: '', apiStatus: status.initials}
 
@@ -113,11 +123,6 @@ class Home extends Component {
     </div>
   )
 
-  logoutSuccess = props => {
-    console.log(props)
-    Cookies.remove('jwt_token')
-  }
-
   renderSliderDetails = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
@@ -138,7 +143,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home-container">
-        <Header />
+        <Header home />
         <h1 className="home-heading">Find Your Next Favorite Books?</h1>
         <p className="home-paragraph">
           You are in the right place. Tell us what titles or genres you have
@@ -149,7 +154,7 @@ class Home extends Component {
           <div className="top-rated-books">
             <h1 className="top-rated-heading">Top Rated Books</h1>
 
-            <button className="button" type="button">
+            <button className="find-button" type="button">
               <Link to="/shelf" className="link">
                 Find Books
               </Link>

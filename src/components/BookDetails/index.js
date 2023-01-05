@@ -87,10 +87,10 @@ class BookDetails extends Component {
         <div className="book-details-cont">
           <img
             src={bookDetails.coverPic}
-            alt="title"
+            alt={bookDetails.title}
             className="book-details-image"
           />
-          <div>
+          <div className="align-items">
             <h1 className="book-details-heading">{bookDetails.title}</h1>
             <p className="book-details-paragraph">{bookDetails.authorName}</p>
             <p className="book-details-paragraph">

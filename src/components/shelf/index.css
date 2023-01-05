@@ -20,6 +20,13 @@
   padding-left: 0px;
 }
 
+.rating-cont {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 150px;
+}
+
 .link {
   text-decoration: none;
 }
@@ -54,9 +61,45 @@
   text-align: left;
   color: #334155;
 }
+
+@media screen and (max-width: 786px) {
+  .all-books-heading {
+    display: none;
+  }
+}
+
 .middle-container {
   width: 1002px;
   height: 1150px;
+}
+
+@media screen and (max-width: 767px) {
+  .middle-container {
+    width: 367px;
+    height: 640px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .divide-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .unordered-list {
+    display: flex;
+    width: 367px;
+    flex-wrap: wrap;
+  }
+
+  .side-container {
+    width: 367px;
+    height: 200px;
+    flex-wrap: wrap;
+  }
 }
 
 .search {
@@ -99,6 +142,17 @@
   outline: none;
 }
 
+@media screen and (max-width: 767px) {
+  .list-button {
+    font-weight: 300px;
+    align-items: flex-start;
+    border: 1px solid #0284c7;
+    border-radius: 5px;
+    width: 130px;
+    padding: 10px;
+  }
+}
+
 .active-item {
   border: none;
   margin-top: 10px;
@@ -125,6 +179,7 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+  width: 1000px;
 }
 
 .shelve-list {
@@ -133,12 +188,17 @@
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 25px;
-  margin-right: 20px;
+  margin-right: 40px;
+}
+
+.title-cont {
+  height: 200px;
+  margin-top: 5px;
 }
 
 .shelve-cover-pic {
-  height: 155px;
-  width: 133px;
+  height: 160px;
+  width: 135px;
   left: 438px;
   top: 197px;
   border-radius: 8px;
@@ -160,6 +220,12 @@
   margin-left: 20px;
 }
 
+@media screen and (max-width: 767px) {
+  .shelve-list-container {
+    padding-left: 33px;
+  }
+}
+
 .shelf-books-container {
   display: flex;
   justify-content: flex-start;
@@ -168,47 +234,36 @@
 }
 
 .shelve-author {
-  height: 16px;
-  width: 124px;
-  left: 591px;
-  top: 253px;
   border-radius: nullpx;
   margin-left: 20px;
-
-  font-family: 'roboto';
-  font-size: 14px;
-  font-weight: 500;
   line-height: 16px;
+  font-family: 'roboto';
+  font-size: 15px;
+  font-weight: 500;
   letter-spacing: 0px;
   text-align: left;
   color: #475569;
 }
 
 .shelve-rating {
-  height: 16px;
-  width: 162px;
   left: 591px;
   top: 277px;
-  border-radius: nullpx;
   font-family: 'roboto';
   font-size: 12px;
   font-weight: 500;
-  line-height: 16px;
   letter-spacing: 0px;
   text-align: left;
   margin-left: 20px;
+  margin-right: 10px;
+  line-height: 16px;
 }
 
 .status {
   width: 150px;
   left: 591px;
-  top: 301px;
-  border-radius: nullpx;
-  font-family: Inter;
+  font-family: 'roboto';
   font-size: 12px;
   font-weight: 500;
-  line-height: 16px;
-  letter-spacing: 0px;
   text-align: left;
   margin-left: 20px;
 }
@@ -221,6 +276,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 20px;
+  }
 }
 
 .no-search-results-container {

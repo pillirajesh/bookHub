@@ -100,13 +100,14 @@ class Shelf extends Component {
                     className="shelve-cover-pic"
                   />
                 </Link>
-                <div>
+                <div className="title-cont">
                   <h1 className="shelve-title">{eachShelf.title}</h1>
                   <p className="shelve-author">{eachShelf.authorName}</p>
-                  <p className="shelve-rating">
-                    Avg Rating: <BsFillStarFill className="star" />
-                    <span className="rating">{eachShelf.rating}</span>
-                  </p>
+                  <div className="rating-cont">
+                    <p className="shelve-rating">Avg Rating:</p>
+                    <BsFillStarFill className="star" />
+                    <p className="rating">{eachShelf.rating}</p>
+                  </div>
                   <p className="status">
                     Status:
                     <span className="status-type">{eachShelf.readStatus}</span>
@@ -188,16 +189,14 @@ class Shelf extends Component {
     return (
       <div>
         <div className="home-container">
-          <Header />
+          <Header shelf />
           <div className="divide-container">
             <div className="side-container">
               <h1 className="book-shelve-heading">Bookshelves</h1>
               <ul className="unordered-list">
                 {bookshelvesList.map(eachShelve => {
                   const activeItem =
-                    eachShelve.label === bookshelfName
-                      ? 'active-item'
-                      : 'list-button'
+                    eachShelve.label === bookshelfName ? 'active-item' : ''
                   const searchType = () => {
                     this.setState(
                       {

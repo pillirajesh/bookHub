@@ -25,10 +25,34 @@
   width: 780px;
 }
 
+@media screen and (max-width: 767px) {
+  .login-image {
+    width: 200px;
+    height: 206px;
+    border-radius: 110px;
+  }
+  .login-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 360px;
+  }
+  .login-details-container {
+    margin-top: 20px;
+  }
+
+  .login-container {
+    width: none;
+  }
+}
+
 .logo {
   width: 141px;
   height: 48px;
-  margin-bottom: 51px;
+  margin-bottom: 45px;
+  margin-top: 20px;
 }
 
 .input-username {
@@ -67,7 +91,7 @@
   width: 88px;
   left: 0px;
   top: 3px;
-  font-family: Inter;
+  font-family: 'roboto';
   font-size: 16px;
   font-weight: 600;
   line-height: 19px;
@@ -90,6 +114,49 @@
   cursor: pointer;
   outline: none;
   margin-top: 32px;
+}
+
+@media screen and (max-width: 767px) {
+  .input-password {
+    width: 260px;
+    height: 50px;
+  }
+
+  .input-username {
+    width: 260px;
+    height: 50px;
+  }
+
+  .label {
+    height: 19px;
+    width: 88px;
+    left: 0px;
+    top: 3px;
+    font-family: 'roboto';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #5a7184;
+    font-family: 'roboto';
+  }
+
+  .login-button {
+    height: 50px;
+    width: 260px;
+    left: 0px;
+    top: 0px;
+    border-radius: 8px;
+    background: #0284c7;
+    border: none;
+    font-family: 'robot';
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    margin-top: 32px;
+    margin-bottom: 20px;
+  }
 }
 
 .error {
